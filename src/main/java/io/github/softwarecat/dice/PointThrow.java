@@ -31,73 +31,73 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * {@link ElevenThrow} is a subclass of {@link Throw} for the number, 11. This is special because 11 has one effect on a come-out
- * roll and a different effect on point rolls.
+ * {@link PointThrow} is a subclass of {@link Throw} for the point numbers 4, 5, 6, 8, 9 or 10.
  */
-public class ElevenThrow extends Throw {
+public class PointThrow extends Throw {
 
     /**
-     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo = 11. If the constraint is not satisfied, simply
-     * raise an {@link Exception}.
+     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo == 4, 5, 6, 8, 9 or 10. If the constraint is not satisfied, simply raise an
+     * {@link Exception}.
      * <p>
-     * This uses the superclass constructor to add appropriate {@link Outcome} for a {@link Throw} of 11.
+     * This uses the superclass constructor to add appropriate {@link Outcome}s for a throw of point.
      *
      * @param diceOne the value of one die
      * @param diceTwo the value of the other die
      */
-    public ElevenThrow(int diceOne, int diceTwo) {
+    public PointThrow(int diceOne, int diceTwo) {
         this(diceOne, diceTwo, new Outcome[]{});
     }
 
     /**
-     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo = 11. If the constraint is not satisfied, simply
-     * raise an {@link Exception}.
+     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo == 4, 5, 6, 8, 9 or 10. If the constraint is not satisfied, simply raise an
+     * {@link Exception}.
      * <p>
-     * This uses the superclass constructor to add appropriate {@link Outcome} for a {@link Throw} of 11.
+     * This uses the superclass constructor to add appropriate {@link Outcome}s for a throw of point.
      *
      * @param diceOne  the value of one die
      * @param diceTwo  the value of the other die
      * @param outcomes the various {@link Outcome}s for this {@link Throw}
      */
-    public ElevenThrow(int diceOne, int diceTwo, Outcome... outcomes) {
+    public PointThrow(int diceOne, int diceTwo, Outcome... outcomes) {
         this(diceOne, diceTwo, Arrays.asList(outcomes.clone()));
     }
 
     /**
-     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo = 11. If the constraint is not satisfied, simply
-     * raise an {@link Exception}.
+     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo == 4, 5, 6, 8, 9, or 10. If the constraint is not satisfied, simply raise an
+     * {@link Exception}.
      * <p>
-     * This uses the superclass constructor to add appropriate {@link Outcome} for a {@link Throw} of 11.
+     * This uses the superclass constructor to add appropriate {@link Outcome}s for a throw of point.
      *
      * @param diceOne  the value of one die
      * @param diceTwo  the value of the other die
      * @param outcomes the various {@link Outcome}s for this {@link Throw}
      */
-    public ElevenThrow(int diceOne, int diceTwo, Collection<Outcome> outcomes) {
+    public PointThrow(int diceOne, int diceTwo, Collection<Outcome> outcomes) {
         super(diceOne, diceTwo, outcomes);
 
-        if (diceOne + diceTwo != 11) {
-            throw new IllegalArgumentException("In a eleven throw, dice one and two must sum to 11");
+        int sum = diceOne + diceTwo;
+        if (sum != 4 && sum != 5 && sum != 6 && sum != 8 && sum != 9 && sum != 10) {
+            throw new IllegalArgumentException("In a point throw, dice one and two must sum to 4, 5, 6, 8, 9, or 10");
         }
     }
 
     /**
-     * Eleven is odd and never part of “hardways” bets. This method always returns false.
+     * Returns true if diceOne is equal to diceTwo. This helps determine if hardways bets have been won or lost.
      *
-     * @return {@link Boolean#FALSE}
+     * @return whether diceOne is equal to diceTwo
      */
     @Override
     public boolean isHard() {
-        return false;
+        return super.isHard();
     }
 
     /**
-     * Calls the {@link Game#eleven()} method of a {@link Game}. This may change the game state and resolve bets.
+     * Calls the {@link Game#point()} method of a {@link Game}. This may change the game state and resolve bets.
      *
      * @param game the {@link Game} to be updated based on this throw
      */
     @Override
     public void updateGame(Game game) {
-        game.eleven();
+        game.point();
     }
 }
