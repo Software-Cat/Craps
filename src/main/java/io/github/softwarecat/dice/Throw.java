@@ -97,7 +97,7 @@ public abstract class Throw {
     }
 
     /**
-     * Calls one of the {@link Game} state change methods: {@link Game#craps()}, {@link Game#natural()}, {@link Game#eleven()}, {@link Game#point()}. This may
+     * Calls one of the {@link Game} state change methods: {@link Game#craps()}, {@link Game#natural()}, {@link Game#eleven()}, {@link Game#point(int)}. This may
      * change the game state and resolve bets.
      *
      * @param game the {@link Game} to be updated based on this throw

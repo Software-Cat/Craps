@@ -92,12 +92,12 @@ public class PointThrow extends Throw {
     }
 
     /**
-     * Calls the {@link Game#point()} method of a {@link Game}. This may change the game state and resolve bets.
+     * Calls the {@link Game#point(int)} method of a {@link Game}. This may change the game state and resolve bets.
      *
      * @param game the {@link Game} to be updated based on this throw
      */
     @Override
     public void updateGame(Game game) {
-        game.point();
+        game.point(diceOne + diceTwo);
     }
 }
