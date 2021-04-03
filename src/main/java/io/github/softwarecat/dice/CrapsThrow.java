@@ -31,57 +31,58 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * {@link NaturalThrow} is a subclass of {@link Throw} for the natural number, 7.
+ * {@link CrapsThrow} is a subclass of {@link Throw} for the craps numbers 2, 3 and 12.
  */
-public class NaturalThrow extends Throw {
+public class CrapsThrow extends Throw {
 
     /**
-     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo = 7. If the constraint is not satisfied, simply
-     * raise an {@link Exception}.
+     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo == 2, 3, or 12. If the constraint is not satisfied, simply raise an
+     * {@link Exception}.
      * <p>
-     * This uses the superclass constructor to add appropriate {@link Outcome} for a {@link Throw} of 7.
+     * This uses the superclass constructor to add appropriate {@link Outcome}s for a throw of craps.
      *
      * @param diceOne the value of one die
      * @param diceTwo the value of the other die
      */
-    public NaturalThrow(int diceOne, int diceTwo) {
+    public CrapsThrow(int diceOne, int diceTwo) {
         this(diceOne, diceTwo, new Outcome[]{});
     }
 
     /**
-     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo = 7. If the constraint is not satisfied, simply
-     * raise an {@link Exception}.
+     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo == 2, 3, or 12. If the constraint is not satisfied, simply raise an
+     * {@link Exception}.
      * <p>
-     * This uses the superclass constructor to add appropriate {@link Outcome} for a {@link Throw} of 7.
+     * This uses the superclass constructor to add appropriate {@link Outcome}s for a throw of craps.
      *
      * @param diceOne  the value of one die
      * @param diceTwo  the value of the other die
      * @param outcomes the various {@link Outcome}s for this {@link Throw}
      */
-    public NaturalThrow(int diceOne, int diceTwo, Outcome... outcomes) {
+    public CrapsThrow(int diceOne, int diceTwo, Outcome... outcomes) {
         this(diceOne, diceTwo, Arrays.asList(outcomes.clone()));
     }
 
     /**
-     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo = 7. If the constraint is not satisfied, simply
-     * raise an {@link Exception}.
+     * Creates this {@link Throw}. The constraint is that diceOne + diceTwo == 2, 3, or 12. If the constraint is not satisfied, simply raise an
+     * {@link Exception}.
      * <p>
-     * This uses the superclass constructor to add appropriate {@link Outcome} for a {@link Throw} of 7.
+     * This uses the superclass constructor to add appropriate {@link Outcome}s for a throw of craps.
      *
      * @param diceOne  the value of one die
      * @param diceTwo  the value of the other die
      * @param outcomes the various {@link Outcome}s for this {@link Throw}
      */
-    public NaturalThrow(int diceOne, int diceTwo, Collection<Outcome> outcomes) {
+    public CrapsThrow(int diceOne, int diceTwo, Collection<Outcome> outcomes) {
         super(diceOne, diceTwo, outcomes);
 
-        if (diceOne + diceTwo != 7) {
-            throw new IllegalArgumentException("In a natural throw, dice one and two must sum to 7");
+        int sum = diceOne + diceTwo;
+        if (sum != 2 && sum != 3 && sum != 12) {
+            throw new IllegalArgumentException("In a craps throw, dice one and two must sum to 2, 3, or 12");
         }
     }
 
     /**
-     * A natural 7 is odd, and can never be made “the hard way”. This method always returns false.
+     * The craps numbers are never part of “hardways” bets. This method always returns false.
      *
      * @return {@link Boolean#FALSE}
      */
@@ -91,12 +92,12 @@ public class NaturalThrow extends Throw {
     }
 
     /**
-     * Calls the {@link Game#natural()} method of a {@link Game}. This may change the game state and resolve bets.
+     * Calls the {@link Game#craps()} method of a {@link Game}. This may change the game state and resolve bets.
      *
      * @param game the {@link Game} to be updated based on this throw
      */
     @Override
     public void updateGame(Game game) {
-        game.natural();
+        game.craps();
     }
 }
