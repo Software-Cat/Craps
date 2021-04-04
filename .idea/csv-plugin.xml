@@ -10,6 +10,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\test\java\io\github\softwarecat\dice\NaturalThrowTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\test\java\io\github\softwarecat\dice\PointThrowTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\test\java\io\github\softwarecat\dice\ThrowTest.java">
           <value>
             <Attribute>

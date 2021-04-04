@@ -24,73 +24,43 @@
 
 package io.github.softwarecat.dice;
 
-import io.github.softwarecat.Game;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ThrowTest {
+public class PointThrowTest extends ThrowTest {
 
-    Game game;
-    Throw diceThrow;
-    String methodCalled;
-
+    @Override
     @Before
     public void setUp() {
-        game = new Game() {
-            @Override
-            public void craps() {
-                methodCalled = "craps";
-            }
-
-            @Override
-            public void natural() {
-                methodCalled = "natural";
-            }
-
-            @Override
-            public void eleven() {
-                methodCalled = "eleven";
-            }
-
-            @Override
-            public void point() {
-                methodCalled = "point";
-            }
-        };
+        super.setUp();
+        diceThrow = new PointThrow(2, 2);
     }
 
+    @Override
     @Test
     public void isHard() {
         for (int i = 1; i < 7; i++) {
             for (int j = 1; j < 7; j++) {
-                Throw diceThrow = new Throw(i, j) {
-                    @Override
-                    public void updateGame(Game game) {
-                    }
-                };
+                Throw diceThrow;
+                try {
+                    diceThrow = new PointThrow(i, j);
 
-                if (i == j) {
-                    Assert.assertTrue(diceThrow.isHard());
-                } else {
-                    Assert.assertFalse(diceThrow.isHard());
+                    if (i == j) {
+                        Assert.assertTrue(diceThrow.isHard());
+                    } else {
+                        Assert.assertFalse(diceThrow.isHard());
+                    }
+                } catch (Exception ignored) {
+                    // Expected behaviour, should not allow creation of illegal throws
                 }
             }
         }
     }
 
     @Test
-    public void testToString() {
-        for (int i = 1; i < 7; i++) {
-            for (int j = 1; j < 7; j++) {
-                Throw diceThrow = new Throw(i, j) {
-                    @Override
-                    public void updateGame(Game game) {
-                    }
-                };
-
-                Assert.assertEquals(i + ", " + j, diceThrow.toString());
-            }
-        }
+    public void updateGame() {
+        diceThrow.updateGame(game);
+        Assert.assertEquals("point", methodCalled);
     }
 }
