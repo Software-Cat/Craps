@@ -24,7 +24,7 @@
 
 package io.github.softwarecat;
 
-import org.apache.commons.lang.math.Fraction;
+import org.apache.commons.lang3.math.Fraction;
 
 /**
  * Outcome contains a single outcome on which a bet can be placed.

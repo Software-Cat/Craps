@@ -26,6 +26,7 @@ package io.github.softwarecat.dice;
 
 import io.github.softwarecat.Game;
 import io.github.softwarecat.Outcome;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -113,5 +114,14 @@ public abstract class Throw {
     @Override
     public String toString() {
         return String.format("%d, %d", diceOne, diceTwo);
+    }
+
+    /**
+     * Gets the key representation of the {@link Throw}
+     *
+     * @return the {@link Pair} that is a key for this {@link Throw}
+     */
+    public Pair<Integer, Integer> getKey() {
+        return Pair.of(diceOne, diceTwo);
     }
 }
