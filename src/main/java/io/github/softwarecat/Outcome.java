@@ -34,12 +34,12 @@ public class Outcome {
     /**
      * Holds the name of the Outcome. Examples include "1", "Red", "Pass Line".
      */
-    String name;
+    protected String name;
 
     /**
      * Holds the fractional odds for this Outcome. This is the multiplier for the win amount.
      */
-    Fraction odds;
+    protected Fraction odds;
 
     /**
      * Sets the name and odds from the parameters.
