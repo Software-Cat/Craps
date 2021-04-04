@@ -25,6 +25,7 @@
 package io.github.softwarecat.dice;
 
 import io.github.softwarecat.Game;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -90,6 +91,21 @@ public class ThrowTest {
                 };
 
                 Assert.assertEquals(i + ", " + j, diceThrow.toString());
+            }
+        }
+    }
+
+    @Test
+    public void getKey() {
+        for (int i = 1; i < 7; i++) {
+            for (int j = 1; j < 7; j++) {
+                Throw diceThrow = new Throw(i, j) {
+                    @Override
+                    public void updateGame(Game game) {
+                    }
+                };
+
+                Assert.assertEquals(Pair.of(i, j), diceThrow.getKey());
             }
         }
     }

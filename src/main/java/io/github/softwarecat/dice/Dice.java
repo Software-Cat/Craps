@@ -107,7 +107,7 @@ public class Dice {
      */
     public Throw next() {
         List<Pair<Integer, Integer>> keys = new ArrayList<>(THROWS.keySet());
-        int index = RNG.nextInt(keys.size() - 1);
+        int index = RNG.nextInt(keys.size());
         return THROWS.get(keys.get(index));
     }
 }
