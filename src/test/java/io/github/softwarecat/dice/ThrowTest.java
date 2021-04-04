@@ -54,7 +54,7 @@ public class ThrowTest {
             }
 
             @Override
-            public void point() {
+            public void point(int point) {
                 methodCalled = "point";
             }
         };

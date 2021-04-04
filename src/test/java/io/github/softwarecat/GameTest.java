@@ -51,6 +51,11 @@ public class GameTest {
 
     @Test
     public void point() {
+        Assert.assertEquals(0, game.point);
+        game.point(1);
+        Assert.assertEquals(1, game.point);
+        game.point(2);
+        Assert.assertEquals(1, game.point);
     }
 
     @Test
