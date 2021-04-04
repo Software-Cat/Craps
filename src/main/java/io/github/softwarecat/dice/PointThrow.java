@@ -82,16 +82,6 @@ public class PointThrow extends Throw {
     }
 
     /**
-     * Returns true if diceOne is equal to diceTwo. This helps determine if hardways bets have been won or lost.
-     *
-     * @return whether diceOne is equal to diceTwo
-     */
-    @Override
-    public boolean isHard() {
-        return super.isHard();
-    }
-
-    /**
      * Calls the {@link Game#point(int)} method of a {@link Game}. This may change the game state and resolve bets.
      *
      * @param game the {@link Game} to be updated based on this throw
