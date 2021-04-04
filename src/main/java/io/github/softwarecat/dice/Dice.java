@@ -36,7 +36,7 @@ import java.util.*;
 public class Dice {
 
     /**
-     * The Rng.
+     * Generates the next random number, used to select a {@link Throw} from the {@link Dice#THROWS} collection.
      */
     protected final Random RNG;
     /**

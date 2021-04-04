@@ -33,12 +33,20 @@
     <version>0.1.0</version>
 
     <name>craps</name>
+    <description>Craps game simulation to analyze different betting strategies</description>
     <url>https://github.com/Software-Cat/Craps</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/Software-Cat/Craps/blob/master/LICENSE</url>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
